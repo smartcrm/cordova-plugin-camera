@@ -102,6 +102,24 @@ function capture (success, errorCallback, opts) {
 
     var successCallback = function (stream) {
 
+        /**
+
+         Camera browser fix: https://stackoverflow.com/a/53821674
+
+         localMediaStream = stream;
+         if ('srcObject' in video) {
+            video.srcObject = localMediaStream;
+         } else {
+            video.src = window.URL.createObjectURL(localMediaStream);
+         }
+
+
+         TODO in webapp:
+
+         destinationType: this.cordovaCameraPlugin.DestinationType.DATA_URLs,
+
+         **/
+
         video.srcObject = stream;
         video.play();
 
