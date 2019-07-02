@@ -105,9 +105,7 @@ function capture (success, errorCallback, opts) {
         if ('srcObject' in video) {
             video.srcObject = localMediaStream;
         } else {
-            // video.src = winsdow.URL.createObjectURL(localMediaStream);
-            video.srcObject = stream;
-            video.play();
+            video.src = window.URL.createObjectURL(localMediaStream);
         }
         video.play();
         document.body.appendChild(parent);
